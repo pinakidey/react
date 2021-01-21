@@ -29,7 +29,7 @@ export const BurgerBuilder = (props) => {
     const [ordering, setOrdering] = useState(false);
 
     /* Redux States */
-    const inventory = useSelector(state => state.ingredients || []);
+    const inventory = useSelector(state => state.ingredients) || [];
     const initialIngredients = Object.assign({},...inventory.map(o => ({[o.name] : 0})));
     /* WORKER FUNCTIONS */
 
