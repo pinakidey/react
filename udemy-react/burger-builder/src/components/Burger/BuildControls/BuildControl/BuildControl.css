@@ -1,0 +1,30 @@
+.BuildControl {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 5px 0;
+}
+
+.BuildControl button {
+    margin: 0 5px;
+    width: 80px;
+    cursor: pointer;
+    outline: none;
+}
+
+.BuildControl button:hover:disabled {
+    cursor: not-allowed;
+}
+
+.Label {
+    padding: 10px;
+    font-weight: bold;
+    width: 80px;
+    text-align: right;
+}
+
+.Count {
+    padding: 10px;
+    font-weight: bold;
+    width: 80px;
+}

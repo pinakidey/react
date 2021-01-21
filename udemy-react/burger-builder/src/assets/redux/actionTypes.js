@@ -1,0 +1,11 @@
+
+
+export const INITIALIZE_INGREDIENTS = "INITIALIZE_INGREDIENTS";
+
+export const RESET_FILLINGS = "RESET_FILLINGS";
+export const ADD_FILLING = "ADD_FILLING";
+export const REMOVE_FILLING = "REMOVE_FILLING";
+
+export const GET_ORDERS = "GET_ORDERS";
+export const ADD_ORDER = "ADD_ORDER";
+export const DELETE_ORDER = "DELETE_ORDER";

@@ -1,0 +1,37 @@
+.BuildControls {
+    width: 100%;
+    background-color: rgb(155, 211, 132);
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    box-shadow: 0 2px 1px #ccc;
+    margin: auto;
+    padding: 20px 0 80px;
+    position: fixed;
+    bottom: 0;
+}
+
+.BuildControls .ButtonContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px;
+}
+
+.BuildControls .ButtonContainer button + button {
+    margin-left: 10px;
+}
+
+.BuildControls button {
+    width: 120px;
+}
+
+.BuildControls .ButtonContainer button:hover:disabled {
+    cursor: not-allowed !important;
+}
+
+.BuildControls .TotalPrice {
+    margin-top: 5px;
+    padding: 2px;
+    border: 1px solid black;
+}

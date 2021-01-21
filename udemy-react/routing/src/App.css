@@ -1,0 +1,19 @@
+.App {
+    flex-grow: 1;
+}
+.menuButton {
+    margin-right: 1rem;
+}
+.title {
+    flex-grow: 1;
+}
+.App .AppBar a {
+    margin: auto 10px;
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-decoration: none;
+}
+.App .AppBar a.active {
+    color: cyan;
+}
