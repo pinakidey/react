@@ -16,7 +16,7 @@ beforeAll(() => {
     wrapper = shallow(<BurgerBuilder/>);
 });
 
-describe('Name of the group', () => {
+describe.skip('Name of the group', () => {
     it('should render <BuildControls/> when ingredients is not empty', () => {
         expect(wrapper.contains(<BuildControl/>))
     });

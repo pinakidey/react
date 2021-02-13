@@ -1,42 +1,35 @@
-import React, {useState, useEffect} from 'react'
-import axios from './../../AxiosClient'
-import styles from './OrderHistory.css'
-import moment from 'moment';
 import { DataGrid } from '@material-ui/data-grid';
+import Alert from '@material-ui/lab/Alert';
+import axios from './../../AxiosClient';
+import Button from "./../common/Button/Button";
 import CircularProgress from '@material-ui/core/CircularProgress';
+import isEmpty from "lodash/isEmpty";
+import moment from 'moment';
+import React, {useState} from 'react';
+import styles from './OrderHistory.css';
 
 const OrderHistory = () => {
 
     const [loading, setLoading] = useState(false);
     const [orders, setOrders] = useState([]);
+    const [showAlert, setShowAlert] = useState(false);
 
     // Fetch all orders
-    const fetchOrders = () => {
+    const fetchOrders = (event) => {
         setLoading(true);
         axios.get('https://udemy-react-94dcc-default-rtdb.firebaseio.com/orders.json')
         .then(response => {
-            setOrders(Object.values(response.data));
+            setOrders(Object.values(response.data || {}));
         })
         .catch(error => {
-            console.log(error);
+            //console.log(error);
+            setOrders([]);
         })
         .finally(() => {
-            setLoading(false)
+            setLoading(false);
+            setShowAlert(true);
         });
     }
-
-    useEffect(() => {
-        fetchOrders();
-    }, [])
-
-    const renderOrdersLoader = () => {
-        return (
-            <div className={styles.centered}>
-                <CircularProgress size={64} />
-            </div>
-        );
-    }
-
 
     const columns = [
         { field: 'id', headerName: 'OrderId', width: 100 },
@@ -64,10 +57,21 @@ const OrderHistory = () => {
         })
     });
 
+    //console.log(rows)
+
     const DataTable = () => {
         return (
-            <div style={{ height: "80vh", width: '100%' }}>
+            <div data-testid="datatable" style={{ height: "80vh", width: '100%' }}>
                 <DataGrid rows={rows} columns={columns} pageSize={20} />
+            </div>
+        );
+    }
+
+
+    const renderOrdersLoader = () => {
+        return (
+            <div className={styles.centered}>
+                <CircularProgress size={64} />
             </div>
         );
     }
@@ -75,8 +79,10 @@ const OrderHistory = () => {
     return (
         <div className={styles.OrderHistory}>
             <h1>Order History</h1>
+            <Button className={styles.buttonClass} data-testid="fetchButton" disabled={loading} size="large" variant="contained" color="primary" onClick={fetchOrders}>Fetch Orders</Button>
+            {showAlert && <Alert severity={rows.length ? "success" : "error"}>{`Found ${rows.length || "No"} order(s).`}</Alert>}
+            {!isEmpty(orders) && <DataTable />}
             {loading && renderOrdersLoader()}
-            <DataTable/>
         </div>
     )
 }

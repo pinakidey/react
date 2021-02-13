@@ -167,5 +167,8 @@
     "presets": [
       "react-app"
     ]
+  },
+  "devDependencies": {
+    "msw": "^0.26.1"
   }
 }

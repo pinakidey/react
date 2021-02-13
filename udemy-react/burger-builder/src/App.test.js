@@ -10,7 +10,7 @@ let wrapper;
 beforeAll(() => {
     wrapper = shallow(<App/>);
 });
-describe('<App/>', () => {
+describe.skip('<App/>', () => {
     it('should contain a <Layout/> component only', () => {
         expect(wrapper.contains(<Layout/>));
     });
